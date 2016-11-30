@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+ 
+	<!-- layout -->
+    <definition name="layout1" template="/WEB-INF/views/layout/layout1/base.jsp">           
+    	<put-attribute name="header" value="/WEB-INF/views/layout/layout1/header.jsp" />
+    	<put-attribute name="footer" value="/WEB-INF/views/layout/layout1/footer.jsp" />            
+    </definition> 
+    <definition name="layout2" template="/WEB-INF/views/layout/layout2/base.jsp">           
+    	<put-attribute name="header" value="/WEB-INF/views/layout/layout2/header.jsp" />
+    	<put-attribute name="footer" value="/WEB-INF/views/layout/layout2/footer.jsp" />            
+    </definition> 
+    <definition name="layout3" template="/WEB-INF/views/layout/layout3/base.jsp">           
+    	<put-attribute name="header" value="/WEB-INF/views/layout/layout3/header.jsp" />
+    	<put-attribute name="footer" value="/WEB-INF/views/layout/layout3/footer.jsp" />            
+    </definition> 
+    <definition name="layout4" template="/WEB-INF/views/layout/layout4/base.jsp">           
+    	<put-attribute name="header" value="/WEB-INF/views/layout/layout4/header.jsp" />
+    	<put-attribute name="footer" value="/WEB-INF/views/layout/layout4/footer.jsp" />            
+    </definition>
+    <definition name="layout5" template="/WEB-INF/views/layout/layout5/base.jsp">           
+    	<put-attribute name="header" value="/WEB-INF/views/layout/layout5/header.jsp" />
+    	<put-attribute name="footer" value="/WEB-INF/views/layout/layout5/footer.jsp" />            
+    </definition>
+    <!-- Error -->
+    <definition name="layout.errorBase" template="/WEB-INF/views/error/errorBase.jsp"></definition>
+    <definition name="error.notFound404" extends="layout.errorBase">
+    	<put-attribute name="content" value="/WEB-INF/views/error/404.jsp"/>
+    </definition>
+    <definition name="error.500" extends="layout.errorBase">
+    	<put-attribute name="content" value="/WEB-INF/views/error/500.jsp"/>
+    </definition>
+    
+    <!-- home -->
+    <definition name="home" template="/WEB-INF/views/home/home.jsp">
+    	<put-attribute name="title" value="Homepage" />                
+    </definition>    
+    
+    
+ 	
+	
+    <!-- Auth -->
+    <definition name="login" template="/WEB-INF/views/auth/login.jsp">
+    	    
+    </definition>
+    <definition name="register" template="/WEB-INF/views/auth/register.jsp">
+     
+    </definition>
+    <definition name="denied" extends="layout1">
+    	<put-attribute name="title" value="Access Denied" />
+    	<put-attribute name="content" value="/WEB-INF/views/auth/denied.jsp" />                
+    </definition>
+    
+    
+    <!-- Manager -->
+    <definition name="manage.home" extends="layout4">
+    	<put-attribute name="title" value="Chức năng quản lý danh mục" />
+    	<put-attribute name="content" value="/WEB-INF/views/home/managehome.jsp" />                
+    </definition> 
+    
+    <definition name="usermanagement.home" extends="layout4">
+    	<put-attribute name="title" value="Chức năng quản lý người sử dụng" />
+    	<put-attribute name="content" value="/WEB-INF/views/usermanager/list.jsp" />                
+    </definition> 
+    
+    <definition name="usermanagement.addUser" extends="layout4">
+    	<put-attribute name="title" value="Chức năng them nguoi su dung" />
+    	<put-attribute name="content" value="/WEB-INF/views/usermanager/add.jsp" />                
+    </definition> 
+    
+    
+    
+    
+ 
+</tiles-definitions>
