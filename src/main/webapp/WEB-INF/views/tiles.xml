@@ -5,7 +5,7 @@
 <tiles-definitions>
  
 	<!-- layout -->
-    <definition name="layout1" template="/WEB-INF/views/layout/layout1/base.jsp">           
+	 <definition name="layout1" template="/WEB-INF/views/layout/layout1/base.jsp">           
     	<put-attribute name="header" value="/WEB-INF/views/layout/layout1/header.jsp" />
     	<put-attribute name="footer" value="/WEB-INF/views/layout/layout1/footer.jsp" />            
     </definition> 
@@ -25,6 +25,20 @@
     	<put-attribute name="header" value="/WEB-INF/views/layout/layout5/header.jsp" />
     	<put-attribute name="footer" value="/WEB-INF/views/layout/layout5/footer.jsp" />            
     </definition>
+    
+    <definition name="layoutusermanagement" template="/WEB-INF/views/layout/layoutusermanagement/base.jsp">           
+    	<put-attribute name="header" value="/WEB-INF/views/layout/layoutusermanagement/header.jsp" />
+    	<put-attribute name="footer" value="/WEB-INF/views/layout/layoutusermanagement/footer.jsp" />            
+    </definition>
+    <definition name="layoutreliefdemand" template="/WEB-INF/views/layout/layoutreliefdemand/base.jsp">           
+    	<put-attribute name="header" value="/WEB-INF/views/layout/layoutreliefdemand/header.jsp" />
+    	<put-attribute name="footer" value="/WEB-INF/views/layout/layoutreliefdemand/footer.jsp" />            
+    </definition>
+    <definition name="layoutrelief" template="/WEB-INF/views/layout/layoutrelief/base.jsp">           
+    	<put-attribute name="header" value="/WEB-INF/views/layout/layoutrelief/header.jsp" />
+    	<put-attribute name="footer" value="/WEB-INF/views/layout/layoutrelief/footer.jsp" />            
+    </definition>
+    
     <!-- Error -->
     <definition name="layout.errorBase" template="/WEB-INF/views/error/errorBase.jsp"></definition>
     <definition name="error.notFound404" extends="layout.errorBase">
@@ -56,23 +70,38 @@
     
     
     <!-- Manager -->
-    <definition name="manage.home" extends="layout4">
+    <definition name="manage.home" extends="layoutusermanagement">
     	<put-attribute name="title" value="Chức năng quản lý danh mục" />
     	<put-attribute name="content" value="/WEB-INF/views/home/managehome.jsp" />                
     </definition> 
     
-    <definition name="usermanagement.home" extends="layout4">
+    <definition name="usermanagement.home" extends="layoutusermanagement">
     	<put-attribute name="title" value="Chức năng quản lý người sử dụng" />
     	<put-attribute name="content" value="/WEB-INF/views/usermanager/list.jsp" />                
     </definition> 
     
-    <definition name="usermanagement.addUser" extends="layout4">
+    <definition name="usermanagement.addUser" extends="layoutusermanagement">
     	<put-attribute name="title" value="Chức năng them nguoi su dung" />
     	<put-attribute name="content" value="/WEB-INF/views/usermanager/add.jsp" />                
     </definition> 
     
     
+    <!-- ReliefDemand -->
+    <definition name="reliefdemand.home" extends="layoutreliefdemand">
+    	<put-attribute name="title" value="Xem danh sach can cuu tro" />
+    	<put-attribute name="content" value="/WEB-INF/views/reliefdemand/home.jsp" />                
+    </definition> 
     
-    
+    <definition name="reliefdemand.list" extends="layoutreliefdemand">
+    	<put-attribute name="title" value="Xem danh sach can cuu tro" />
+    	<put-attribute name="content" value="/WEB-INF/views/reliefdemand/list.jsp" />                
+    </definition> 
  
+ 
+ 	<!--  -->
+ 	<definition name="relief.home" extends="layoutrelief">
+    	<put-attribute name="title" value="Xem danh sach can cuu tro" />
+    	<put-attribute name="content" value="/WEB-INF/views/relief/home.jsp" />                
+    </definition> 
+    
 </tiles-definitions>
