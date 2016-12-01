@@ -10,6 +10,7 @@ import com.fpt.tomamy.modules.reliefdemand.model.ReliefDemandFullInfo;
 
 public interface ReliefDemandService {
 	public List<ReliefDemand> list();
+	public List<ReliefDemand> listReliefDemandOfSession(String reliefSessionCode);
 	public List<ReliefDemandFullInfo> list(String reliefSessionCode);
 	public List<Good> listGoodsDemand(String reliefCommuneSessionCode);
 	public List<ReliefDemandDetail> listReliefDemandDetail(String reliefDemandCode);

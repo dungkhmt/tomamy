@@ -16,6 +16,7 @@ import com.fpt.tomamy.modules.reliefdemand.model.ReliefDemand;
 import com.fpt.tomamy.modules.reliefdemand.model.ReliefDemandDetail;
 import com.fpt.tomamy.modules.reliefdemand.model.ReliefDemandDetailFullInfo;
 import com.fpt.tomamy.modules.reliefdemand.model.ReliefDemandFullInfo;
+import com.mysql.jdbc.log.Log;
 
 @Service("ReliefDemand")
 public class ReliefDemandServiceImpl implements ReliefDemandService{
@@ -26,13 +27,26 @@ public class ReliefDemandServiceImpl implements ReliefDemandService{
 	@Autowired
 	GoodService goodService;
 	
+	
+	public String name(){
+		return "ReliefDemandServiceImpl";
+	}
 	public int saveAReliefDemandDetail(String reliefDemandCode, String goodCode, double quantity, String userCode){
-		ReliefDemandDetail rdd = new ReliefDemandDetail();
+		ReliefDemandDetail rdd = reliefDemandDAO.getReliefDemandDetail(reliefDemandCode, goodCode);
+		if(rdd != null){
+			System.out.println(name() + "::saveAReliefDemandDetail, record already exit!!!!!");
+			return -1;
+		}
+		
 		rdd.setRLFDMDT_GoodCode(goodCode);
 		rdd.setRLFDMDT_ReliefDemandCode(reliefDemandCode);
 		rdd.setRLFDMDT_Quantity(quantity);
 		rdd.setRLFDMDT_CreatedByUserCode(userCode);
 		int id = reliefDemandDAO.saveAReliefDemandDetail(rdd);
+		System.out.println(name() + "::saveAReliefDemandDetail, id = " + id);
+		rdd = reliefDemandDAO.getReliefDemandDetail(reliefDemandCode, goodCode);
+		rdd.setRLFDMDT_Code(reliefDemandCode + id);
+		reliefDemandDAO.updateAReliefDemandDetail(rdd);
 		
 		return id;
 	}
@@ -55,9 +69,11 @@ public class ReliefDemandServiceImpl implements ReliefDemandService{
 	public List<ReliefDemand> list(){
 		return reliefDemandDAO.list();
 	}
-	
+	public List<ReliefDemand> listReliefDemandOfSession(String reliefSessionCode){
+		return reliefDemandDAO.getReliefDemandOfSession(reliefSessionCode);
+	}
 	public List<ReliefDemandFullInfo> list(String reliefSessionCode){
-		List<ReliefDemand> list= list();
+		List<ReliefDemand> list= listReliefDemandOfSession(reliefSessionCode);
 		List<Commune> lstCommunes = communeService.list();
 		HashMap<String, Commune> mCode2Commune = new HashMap<String, Commune>();
 		for(Commune c: lstCommunes){

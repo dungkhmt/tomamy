@@ -22,7 +22,7 @@
 		<div class="main col-sm-4">
 			<div class="form-group">
 				<select id="relief-session" name="relief-session" class="form-control">
-					<option>Chon dot cuu tro</option>
+					<option>Chọn đợt cứu trợ</option>
 					<c:forEach items="${reliefsessions}" var="reliefsession">
 						<option value="${reliefsession.RLFSS_Code}"><c:out value="${reliefsession.RLFSS_Name}"/></option>
 					</c:forEach>

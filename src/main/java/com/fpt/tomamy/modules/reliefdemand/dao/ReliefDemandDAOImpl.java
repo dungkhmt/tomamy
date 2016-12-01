@@ -14,6 +14,19 @@ import com.fpt.tomamy.modules.reliefdemand.model.ReliefDemandDetail;
 @SuppressWarnings({"unchecked", "rawtypes"})
 public class ReliefDemandDAOImpl extends BaseDao implements ReliefDemandDAO{
 	
+	public void updateAReliefDemandDetail(ReliefDemandDetail rdd){
+		try{
+			begin();
+			getSession().update(rdd);
+			commit();
+		}catch(Exception ex){
+			ex.printStackTrace();
+			
+		}finally{
+			flush();
+			close();
+		}
+	}
 	public void updateAReliefDemand(ReliefDemand rd){
 		try{
 			begin();
@@ -79,6 +92,24 @@ public class ReliefDemandDAOImpl extends BaseDao implements ReliefDemandDAO{
 			close();
 		}
 	}
+	
+	public List<ReliefDemand> getReliefDemandOfSession(String reliefSessionCode){
+		try{
+			begin();
+			Criteria criteria = getSession().createCriteria(ReliefDemand.class);
+			criteria.add(Restrictions.eq("RLFDM_ReliefSessionCode", reliefSessionCode));
+			List<ReliefDemand> listReliefDemands = criteria.list();
+			commit();
+			return listReliefDemands;
+			
+		}catch(Exception ex){
+			ex.printStackTrace();
+			return null;
+		}finally{
+			flush();
+	        close();
+		}
+	}
 	public List<ReliefDemand> list(){
 		try{
 			begin();
@@ -94,6 +125,27 @@ public class ReliefDemandDAOImpl extends BaseDao implements ReliefDemandDAO{
 			flush();
 	        close();
 		}
+	}
+	
+	public ReliefDemandDetail getReliefDemandDetail(String reliefDemandCode, String goodCode){
+		try{
+			begin();
+			Criteria criteria = getSession().createCriteria(ReliefDemandDetail.class);
+			criteria.add(Restrictions.eq("RLFDMDT_ReliefDemandCode",reliefDemandCode));
+			criteria.add(Restrictions.eq("RLFDMDT_GoodCode",goodCode));
+			List<ReliefDemandDetail> listReliefDemands = criteria.list();
+			commit();
+			if(listReliefDemands != null && listReliefDemands.size() > 0)
+				return listReliefDemands.get(0);
+			else return null;
+		}catch(Exception ex){
+			ex.printStackTrace();
+			return null;
+		}finally{
+			flush();
+	        close();
+		}
+		
 	}
 	public List<ReliefDemandDetail> listReliefDemandDetail(String reliefDemandCode){
 		try{

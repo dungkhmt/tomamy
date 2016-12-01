@@ -92,7 +92,16 @@ public class ReliefDemandController extends BaseWeb{
 		}
 		rd = reliefDemandService.getReliefDemand(form.getReliefSessionCode(), form.getCommuneCode());
 		
-		reliefDemandService.saveAReliefDemandDetail(rd.getRLFDM_Code(), form.getGoodCode(), form.getQuantity(),u.getUsername());
+		int id = reliefDemandService.saveAReliefDemandDetail(rd.getRLFDM_Code(), form.getGoodCode(), form.getQuantity(),u.getUsername());
+		
+		List<ReliefSession> reliefSessions = reliefSessionService.list();
+		List<Good> goods = goodService.list();
+		List<Commune> communes = communeService.list();
+		
+		model.put("reliefSessions", reliefSessions);
+		model.put("ReliefDemandGoodForm", new ReliefDemandGoodForm());
+		model.put("communes", communes);
+		model.put("goods", goods);
 		
 		return "reliefdemand.add";
 	}

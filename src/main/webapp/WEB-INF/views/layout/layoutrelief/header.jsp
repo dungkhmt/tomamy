@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 	<div class="navbar-header">
-		<a href="<c:url value="/"/>"><span class="navbar-brand">Thông tin nhu cầu cứu trợ</span></a>
+		<a href="<c:url value="/"/>"><span class="navbar-brand">Thông tin về cứu trợ</span></a>
 	</div>
 	
 	<ul class="nav navbar-top-links navbar-right">
@@ -21,7 +21,7 @@
 	<div class="navbar-default sidebar" id="sidebar" role="navigation">
 		<div class="sidebar-nav navbar-collapse">
 			<ul	class="nav" id="side-menu">
-				<li><a href="<c:url value="${baseUrl}/reliefdemand/list-relief-demand"/>">Xem tinh hinh cứu trợ</a></li>
+				<li><a href="<c:url value="${baseUrl}/reliefdemand/list-relief"/>">Xem tình hình cứu trợ</a></li>
 				
 			</ul>
 		</div>
