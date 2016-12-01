@@ -102,10 +102,19 @@
     	<put-attribute name="content" value="/WEB-INF/views/reliefdemand/add.jsp" />                
     </definition> 
  
- 	<!--  -->
+ 	<!--  Relief -->
  	<definition name="relief.home" extends="layoutrelief">
     	<put-attribute name="title" value="Xem danh sach can cuu tro" />
     	<put-attribute name="content" value="/WEB-INF/views/relief/home.jsp" />                
-    </definition> 
+    </definition>
     
+    <definition name="relief.list" extends="layoutrelief">
+    	<put-attribute name="title" value="Xem danh sach cuu tro" />
+    	<put-attribute name="content" value="/WEB-INF/views/relief/list.jsp" />                
+    </definition>
+     
+    <definition name="relief.add" extends="layoutrelief">
+    	<put-attribute name="title" value="Them thonkg tin cuu tro" />
+    	<put-attribute name="content" value="/WEB-INF/views/relief/add.jsp" />                
+    </definition>
 </tiles-definitions>

@@ -21,7 +21,7 @@
 	<div class="navbar-default sidebar" id="sidebar" role="navigation">
 		<div class="sidebar-nav navbar-collapse">
 			<ul	class="nav" id="side-menu">
-				<li><a href="<c:url value="${baseUrl}/reliefdemand/list-relief"/>">Xem tình hình cứu trợ</a></li>
+				<li><a href="<c:url value="${baseUrl}/relief/list-relief"/>">Xem tình hình cứu trợ</a></li>
 				
 			</ul>
 		</div>

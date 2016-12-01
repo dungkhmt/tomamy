@@ -17,6 +17,7 @@ public class Relief {
 	String RLF_ReliefSessionCode;
 	String RLF_CreateByUserCode;
 	String RLF_LastModifiedDate;
+	
 	public int getRLF_ID() {
 		return RLF_ID;
 	}
