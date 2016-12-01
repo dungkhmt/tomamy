@@ -1,26 +1,64 @@
 package com.fpt.tomamy.modules.reliefdemand.model;
 
-public class ReliefDemandDetail extends ReliefDemand{
-	String RLFDM_CommuneName;
-	String RLFDM_CommuneLatLng;
-	String RLFDM_ReliefSessionName;
-	public String getRLFDM_CommuneName() {
-		return RLFDM_CommuneName;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tblreliefdemanddetail")
+public class ReliefDemandDetail{
+	@Id
+	@GeneratedValue
+	int RLFDMDT_ID;
+	String RLFDMDT_Code;
+	String RLFDMDT_ReliefDemandCode;
+	String RLFDMDT_GoodCode;
+	double RLFDMDT_Quantity;
+	String RLFDMDT_CreatedByUserCode;
+	String RLFDMDT_LastModifiedDate;
+	public int getRLFDMDT_ID() {
+		return RLFDMDT_ID;
 	}
-	public void setRLFDM_CommuneName(String rLFDM_CommuneName) {
-		RLFDM_CommuneName = rLFDM_CommuneName;
+	public void setRLFDMDT_ID(int rLFDMDT_ID) {
+		RLFDMDT_ID = rLFDMDT_ID;
 	}
-	public String getRLFDM_ReliefSessionName() {
-		return RLFDM_ReliefSessionName;
+	public String getRLFDMDT_Code() {
+		return RLFDMDT_Code;
 	}
-	public void setRLFDM_ReliefSessionName(String rLFDM_ReliefSessionName) {
-		RLFDM_ReliefSessionName = rLFDM_ReliefSessionName;
+	public void setRLFDMDT_Code(String rLFDMDT_Code) {
+		RLFDMDT_Code = rLFDMDT_Code;
 	}
-	public String getRLFDM_CommuneLatLng() {
-		return RLFDM_CommuneLatLng;
+	public String getRLFDMDT_ReliefDemandCode() {
+		return RLFDMDT_ReliefDemandCode;
 	}
-	public void setRLFDM_CommuneLatLng(String rLFDM_CommuneLatLng) {
-		RLFDM_CommuneLatLng = rLFDM_CommuneLatLng;
+	public void setRLFDMDT_ReliefDemandCode(String rLFDMDT_ReliefDemandCode) {
+		RLFDMDT_ReliefDemandCode = rLFDMDT_ReliefDemandCode;
 	}
+	public String getRLFDMDT_GoodCode() {
+		return RLFDMDT_GoodCode;
+	}
+	public void setRLFDMDT_GoodCode(String rLFDMDT_GoodCode) {
+		RLFDMDT_GoodCode = rLFDMDT_GoodCode;
+	}
+	public double getRLFDMDT_Quantity() {
+		return RLFDMDT_Quantity;
+	}
+	public void setRLFDMDT_Quantity(double rLFDMDT_Quantity) {
+		RLFDMDT_Quantity = rLFDMDT_Quantity;
+	}
+	public String getRLFDMDT_CreatedByUserCode() {
+		return RLFDMDT_CreatedByUserCode;
+	}
+	public void setRLFDMDT_CreatedByUserCode(String rLFDMDT_CreatedByUserCode) {
+		RLFDMDT_CreatedByUserCode = rLFDMDT_CreatedByUserCode;
+	}
+	public String getRLFDMDT_LastModifiedDate() {
+		return RLFDMDT_LastModifiedDate;
+	}
+	public void setRLFDMDT_LastModifiedDate(String rLFDMDT_LastModifiedDate) {
+		RLFDMDT_LastModifiedDate = rLFDMDT_LastModifiedDate;
+	}
+	
 	
 }
