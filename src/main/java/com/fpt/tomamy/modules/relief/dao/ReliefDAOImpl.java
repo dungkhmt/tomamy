@@ -4,6 +4,7 @@ import com.fpt.tomamy.dao.BaseDao;
 import com.fpt.tomamy.modules.relief.model.Relief;
 import com.fpt.tomamy.modules.relief.model.ReliefDetail;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -94,6 +95,40 @@ public class ReliefDAOImpl extends BaseDao implements ReliefDAO{
 		}
 	}
 	
+	public List<ReliefDetail> getReliefDetail(Collection reliefCodes){
+		try{
+			begin();
+			Criteria criteria = getSession().createCriteria(ReliefDetail.class);
+			criteria.add(Restrictions.in("RLFDT_ReliefCode", reliefCodes));
+			
+			List<ReliefDetail> L = criteria.list();
+			commit();
+			return L;
+		}catch(Exception ex){
+			ex.printStackTrace();
+			return null;
+		}finally{
+			flush();
+			close();
+		}
+	}
+	
+	public List<Relief> getReliefOfASession(String reliefSessionCode){
+		try{
+			begin();
+			Criteria criteria = getSession().createCriteria(Relief.class);
+			criteria.add(Restrictions.eq("RLF_ReliefSessionCode",reliefSessionCode));
+			List<Relief> L = criteria.list();
+			commit();
+			return L;
+		}catch(Exception ex){
+			ex.printStackTrace();
+			return null;
+		}finally{
+			flush();
+			close();
+		}
+	}
 	public Relief getRelief(String reliefSessionCode, String reliefOrganizationCode, String communeCode){
 		try{
 			begin();
@@ -101,6 +136,7 @@ public class ReliefDAOImpl extends BaseDao implements ReliefDAO{
 			criteria.add(Restrictions.eq("RLF_ReliefOrganizationCode",reliefOrganizationCode));
 			criteria.add(Restrictions.eq("RLF_ReliefSessionCode",reliefSessionCode));
 			criteria.add(Restrictions.eq("RLF_CommuneCode",communeCode));
+			
 			List<Relief> L = criteria.list();
 			commit();
 			if(L != null && L.size() > 0)

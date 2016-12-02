@@ -131,5 +131,14 @@
 <!-- /#page-wrapper -->
 
 
+
+<script>
+	$(function() {
+        $( ".datepicker" ).datepicker({
+        		format: 'yyyy:mm:dd'
+        		});
+        
+    });
 </script>
+
 

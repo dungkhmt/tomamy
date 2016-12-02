@@ -97,16 +97,17 @@ function addRelief(){
 }
 
 
-function viewReliefDemand(commune){
-	var reliefDemandCode = commune.infocode;
+function viewReliefInfo(commune, reliefSessionCode){
+	var communeCode = commune.infocode;
 	
 	//var items = "";
+	var info = "{\"communeCode\":\"" + communeCode + "\",\"reliefSessionCode\":\"" + reliefSessionCode + "\"}";
 	$.ajax({ 
    		type:"POST", 
-    	url:"${baseUrl}/reliefdemand/get-relief-goods",
+    	url:"${baseUrl}/relief/get-relief-goods",
     	//contentType: "application/json; charset=utf-8",
         //dataType: "json",
-    	data: "reliefdemandcode=" + reliefDemandCode,
+    	data: "info=" + info,
     	//contentType: "application/json; charset=utf-8",
     	//dataType: "json",
     	//Stringified Json Object
@@ -122,19 +123,25 @@ function viewReliefDemand(commune){
 			items += "<td>" + "Tên hàng hoá" + "</td>\n"; 
 			items += "<td>" + "Số lượng" + "</td>\n";
 			items += "<td>" + "Đơn vị tính" + "</td>\n";
+			items += "<td>" + "Thành tiền" + "</td>\n";
+			items += "<td>" + "Tổ chức cứu trợ" + "</td>\n";
 			items += "</tr>";
 		
-    		for(i = 0; i < obj.demands.length; i++){
+    		for(i = 0; i < obj.reliefs.length; i++){
     			items += "<tr>";
-    			items += "<td>" + decodeURIComponent(obj.demands[i].item.name) + "</td>\n"; 
-    			items += "<td>" + obj.demands[i].item.quantity + "</td>\n";
-    			items += "<td>" + decodeURIComponent(obj.demands[i].item.unit) + "</td>\n";
+    			items += "<td>" + decodeURIComponent(obj.reliefs[i].good) + "</td>\n"; 
+    			items += "<td>" + obj.reliefs[i].quantity + "</td>\n";
+    			items += "<td>" + decodeURIComponent(obj.reliefs[i].unit) + "</td>\n";
+    			items += "<td>" + obj.reliefs[i].money + "</td>\n";
+    			items += "<td>" + decodeURIComponent(obj.reliefs[i].organization) + "</td>\n";
     			items += "</tr>";
     		}
     		items += "</table>";
     		console.log("viewReliefDemand --> GOT items " + items);
+    		var content = decodeURIComponent(commune.name) + "<br>" + items;
+    		//alert("name = " + commune.name + ", content = " + content);
     		
-    		commune.infowindow.setContent(items);
+    		commune.infowindow.setContent(content);
     		commune.infowindow.open(map, commune);
     		//var infowindow = new google.maps.InfoWindow({
     		//	content: items
@@ -158,6 +165,7 @@ function viewReliefCommunes(obj){
 		var lng = obj.communes[i].lng;
 		var latlng = new google.maps.LatLng(lat,lng);
 		var infocode = obj.communes[i].infocode;
+		var name = obj.communes[i].infoname;
 		//var demand = getReliefDemand(infocode);
 		//alert(demand);
 		//console.log("commune " + i + ", demand = " + demand);
@@ -172,13 +180,15 @@ function viewReliefCommunes(obj){
 	          //title: obj.communes[i].infocode,
 	          'ID': communes.length,
 	          infowindow: infowindow,
-	          infocode: infocode
+	          infocode: infocode,
+	          name: name
 	        });
 		
 		
 		marker.addListener('click', function() {
 		    //this.infowindow.open(map, this);
-		    viewReliefDemand(this);
+		    var selectReliefSession=$("#relief-session option:selected").val();
+		    viewReliefInfo(this,selectReliefSession);
 		    
 		});
 		
@@ -189,7 +199,7 @@ function viewRelief(){
 	var select=$("#relief-session option:selected").val();
 	$.ajax({ 
    		type:"POST", 
-    	url:"${baseUrl}/reliefdemand/get-relief-communes",
+    	url:"${baseUrl}/relief/get-relief-communes",
     	data: "reliefsession=" + select,
     	//contentType: "application/json; charset=utf-8",
     	//dataType: "json",
