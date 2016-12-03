@@ -54,8 +54,8 @@ tblReliefSessions
 	
 tblReliefDemand
 	RLFDM_ID
-	RLFDM_Code
-	RLFDM_CommuneCode
+	RLFDM_Code 
+	RLFDM_CommuneCode (refers to tblCommunes)
 	RLFDM_ReliefSessionCode (refers to RLFSS_Code of tblReliefSessions)
 	RLFDM_CreatedByUserCode
 	RLFDM_LastModifiedDate
@@ -74,8 +74,8 @@ tblReliefDemandDetail
 tblRelief
 	RLF_ID
 	RLF_Code
-	RLF_ReliefOrganizationCode
-	RLF_CommuneCode
+	RLF_ReliefOrganizationCode (refers tblReliefOrganization)
+	RLF_CommuneCode (refers to tblCommunes)
 	RLF_ReliefSessionCode (refers to RLFSS_Code of tblReliefSessions)
 	RLF_CreateByUserCode
 	RLF_LastModifiedDate
