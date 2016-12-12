@@ -100,7 +100,6 @@ public class ReliefServiceImpl implements ReliefService{
 		rl.setRLF_ReliefOrganizationCode(reliefOrganizationCode);
 		rl.setRLF_ReliefSessionCode(reliefSessionCode);
 		rl.setRLF_CreateByUserCode(userCode);
-		
 		return reliefDAO.saveARelief(rl);
 	}
 	
@@ -113,5 +112,10 @@ public class ReliefServiceImpl implements ReliefService{
 		rd.setRLFDT_CreatedByUserCode(userCode);
 		rd.setRLFDT_Date(date);
 		return reliefDAO.saveAReliefDetail(rd);
+	}
+	
+	@Override
+	public List<Relief> list(String reliefOrganizationCode) {
+		return reliefDAO.getReliefOfAOrganization(reliefOrganizationCode);
 	}
 }

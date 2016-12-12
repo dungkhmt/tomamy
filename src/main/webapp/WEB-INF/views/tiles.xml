@@ -112,6 +112,11 @@
     	<put-attribute name="title" value="Xem danh sach cuu tro" />
     	<put-attribute name="content" value="/WEB-INF/views/relief/list.jsp" />                
     </definition>
+    
+    <definition name="relief.listByOrg" extends="layoutrelief">
+    	<put-attribute name="title" value="Xem danh sach cuu tro" />
+    	<put-attribute name="content" value="/WEB-INF/views/relief/list_by_org.jsp" />                
+    </definition>
      
     <definition name="relief.add" extends="layoutrelief">
     	<put-attribute name="title" value="Them thonkg tin cuu tro" />

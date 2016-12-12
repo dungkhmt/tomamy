@@ -14,4 +14,5 @@ public interface ReliefDAO {
 	public void updateAReliefDetail(ReliefDetail rd);
 	public List<ReliefDetail> getReliefDetail(Collection reliefCodes);
 	public List<Relief> getReliefOfASession(String reliefSessionCode);
+	public List<Relief> getReliefOfAOrganization(String reliefOrganizationCode);
 }

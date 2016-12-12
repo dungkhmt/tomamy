@@ -22,7 +22,7 @@
 		<div class="sidebar-nav navbar-collapse">
 			<ul	class="nav" id="side-menu">
 				<li><a href="<c:url value="${baseUrl}/relief/list-relief"/>">Xem tình hình cứu trợ</a></li>
-				<li><a href="<c:url value="${baseUrl}/relief/list-relief"/>">Xem tình hình cứu trợ theo tổ chức cứu trợ</a></li>
+				<li><a href="<c:url value="${baseUrl}/relief/list-relief-by-org"/>">Xem tình hình cứu trợ theo tổ chức cứu trợ</a></li>
 			</ul>
 		</div>
 	</div>

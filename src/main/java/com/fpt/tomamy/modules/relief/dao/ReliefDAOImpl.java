@@ -150,4 +150,22 @@ public class ReliefDAOImpl extends BaseDao implements ReliefDAO{
 			close();
 		}
 	}
+	@Override
+	public List<Relief> getReliefOfAOrganization(String reliefOrganizationCode) {
+		try{
+			begin();
+			Criteria criteria = getSession().createCriteria(Relief.class);
+			criteria.add(Restrictions.eq("RLF_ReliefOrganizationCode",reliefOrganizationCode));
+			
+			List<Relief> L = criteria.list();
+			commit();
+			return L;
+		}catch(Exception ex){
+			ex.printStackTrace();
+			return null;
+		}finally{
+			flush();
+			close();
+		}
+	}
 }
