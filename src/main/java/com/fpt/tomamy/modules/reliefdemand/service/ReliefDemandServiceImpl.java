@@ -38,6 +38,8 @@ public class ReliefDemandServiceImpl implements ReliefDemandService{
 			return -1;
 		}
 		
+		rdd = new ReliefDemandDetail();
+		
 		rdd.setRLFDMDT_GoodCode(goodCode);
 		rdd.setRLFDMDT_ReliefDemandCode(reliefDemandCode);
 		rdd.setRLFDMDT_Quantity(quantity);
@@ -52,12 +54,13 @@ public class ReliefDemandServiceImpl implements ReliefDemandService{
 	}
 	public int saveAReliefDemand(String reliefSessionCode, String communeCode, String userCode){
 		ReliefDemand rd = new ReliefDemand();
+		rd.setRLFDM_Code(reliefSessionCode + communeCode);
+		
 		rd.setRLFDM_ReliefSessionCode(reliefSessionCode);
 		rd.setRLFDM_CommuneCode(communeCode);
 		rd.setRLFDM_CreatedByUserCode(userCode);
 		int id = reliefDemandDAO.saveAReliefDemand(rd);
 		
-		rd.setRLFDM_Code(reliefSessionCode + communeCode);
 		
 		reliefDemandDAO.updateAReliefDemand(rd);
 		

@@ -91,5 +91,12 @@ tblReliefDetail
 	RLFDT_CreatedByUserCode
 	RLFDT_LastModifiedDate
 	
+tblDamages
+	DMG_ID
+	DMG_CommuneCode (refers to tblCommunes)
+	DMG_ReliefSessionCode (refers to tblReliefSession)	
+	DMG_EstimateMoney	
+	DMG_CreatedByUserCode
+	DMG_LastModifiedDate
 	
 
